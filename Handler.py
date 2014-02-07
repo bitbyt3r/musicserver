@@ -29,6 +29,18 @@ class AudioHandler:
     return self.library.search(query)
 
   @require_login
+  def startRecording(self, sid, filename):
+    return self.sessions[sid].startRecording(filename)
+
+  @require_login
+  def stopRecording(self, sid):
+    return self.sessions[sid].stopRecording()
+
+  @require_login
+  def recordingStatus(self, sid):
+    return self.sessions[sid].recordingStatus()
+
+  @require_login
   def player_add_song(self, sid, songname, position, player):
     return self.sessions[sid].players[player].add(songname, position)
 
